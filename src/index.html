@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fuelr</title>
+    <title>Angular Hello World</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <!-- Base css, but you'll likely want to keep them -->
     <link rel="stylesheet" href="css/reset.css" type="text/css">
 
     <!-- Your custom files -->
+    <link rel="stylesheet" href="css/angular-csp.css" type="text/css">
     <link rel="stylesheet" href="css/app.css" type="text/css">
 
     <script src="GMLIB/info.js"></script>
@@ -19,26 +20,22 @@
     <!-- <script src="GMLIB/monitor.js"></script> -->
     <!-- <script src="GMLIB/nav.js"></script> -->
     <!-- <script src="GMLIB/phone.js"></script> -->
+    <!-- <script src="GMLIB/system.js"></script> -->
     <!-- <script src="GMLIB/ui.js"></script> -->
     <!-- <script src="GMLIB/util.js"></script> -->
     <!-- <script src="GMLIB/voice.js"></script> -->
 
   </head>
-  <body>
+  <body ng-app="ngi">
     <div id="wrapper">
       <div id="close"><img src="images/close.png" onclick="gm.system.closeApp()" alt="close"></div>
-      <div id="main">
-
-        <!-- Remove all code inside #main and add your own! -->
-        <h1>Fuelr</h1>
-        <p>
-          Your VIN is: <span id="vin"></span>
-        </p>
+      <div id="main" ng-controller="HelloWorldCtrl">
 
       </div>
     </div>
 
     <!-- Your app code: -->
+    <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

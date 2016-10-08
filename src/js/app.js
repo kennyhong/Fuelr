@@ -1,6 +1,10 @@
 // Your code goes here
 
-var vinElem = document.getElementById('vin');
-gm.info.getVehicleConfiguration(function(data) {
-  vinElem.innerHTML = gm.info.getVIN();
-});
+angular.module('ngi', [])
+  .controller('HelloWorldCtrl', ['$scope', '$timeout', function($scope, $timeout){
+    $timeout(function(){
+      $scope.vin = gm.info.getVIN();
+    }, 1000);
+  }]);
+
+
