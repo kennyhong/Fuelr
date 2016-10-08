@@ -1,0 +1,12 @@
+{
+  "name":"Fuelr",
+  "id":"96273258",
+  "version": "0.1.0",
+  "src": "src",
+  "dist": "dist",
+  "main": "index.html",
+  "icon": "Icon.png",
+  "developer": "Kenny H., Julius T., Shannon B., Jonathon L.",
+  "category":"General",
+  "type":"RemoteHigh"
+}
