@@ -1,10 +1,44 @@
 /* Your CSS goes here */
-#main {
-  text-align: center;
+body{
+	background-color: #44484f;
+	color:white;
+	text-shadow: 2px 2px black;
 }
 
-#close {
-  position: absolute;
+#main {
+	padding-top: 100px;
+    text-align: center;
+    background-color: transparent;
+}
+
+.find-button{
+	margin-left: 100px;
+	text-align: center;
+	height: 50px;
+	font-size: 20px;
+	margin-top: 10px;
+	width: 400px;
+}
+
+.favorite-button{
+	background-color: #59c655 !important;
+	border-color: #59c655 !important;
+}
+
+meter{
+	width: 190px;
+    margin-top: 70px;
+    margin-left: 40px;
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	height: 70px;
+}
+
+#close-x {
+  /*position: absolute;*/
+  float: right;
   top: 90px;
   right: 0;
   width: 64px;
@@ -12,6 +46,6 @@
   overflow: hidden;
   z-index: 1000;
 }
-#close img {
+#close-x img {
   width: 100%;
 }
