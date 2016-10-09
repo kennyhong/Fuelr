@@ -1,4 +1,4 @@
-angular.module('ngi').controller('HomeCtrl', ['$scope', '$location',
+angular.module('ngi').controller('HomeCtrl',
 	function($scope, $location) {
     var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
     console.log('watching');
@@ -13,4 +13,4 @@ angular.module('ngi').controller('HomeCtrl', ['$scope', '$location',
     function watchDataFailureCallback() {
       console.error("T~T");
     }
-}]);
+});
