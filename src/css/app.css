@@ -33,6 +33,10 @@ body {
 	top: 102px;
 }
 
+li {
+	list-style: none;
+}
+
 
 #gpsMaskingIcon{
 	border:none;
