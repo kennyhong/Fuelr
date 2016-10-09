@@ -1,10 +1,21 @@
 // Your code goes here
 
-angular.module('ngi', [])
-  .controller('HelloWorldCtrl', ['$scope', '$timeout', function($scope, $timeout){
-    $timeout(function(){
-      $scope.vin = gm.info.getVIN();
-    }, 1000);
-  }]);
+angular.module('ngi', ['ngRoute'])
+  .config(function($routeProvider) {
+    $routeProvider.when('/', {
+      templateUrl: '../homePage.html',
+      controller: 'HomeCtrl',
+    })
+    .when('/warning/:fuel', {
+      templateUrl: '../warningPage.html',
+      controller: 'WarningCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+  });
+
+
+
 
 
