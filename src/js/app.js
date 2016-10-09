@@ -42,19 +42,32 @@ angular.module("ngi", ["ngRoute"])
         function watchDataFailureCallback() {
             console.error("T~T");
         }
+
+        $scope.findNearest = function() {
+          $scope.stationPreference = 'distance';
+          getStations();
+        }
+
+        $scope.findCheapest = function() {
+          $scope.stationPreference = 'cheapest';
+          getStations();
+        }
     
         function setStations(res) {
             $scope.stations = res.data.stations;
         }
   
-        gm.info.getCurrentPosition(function (position) {
+        function getStations() {
+          gm.info.getCurrentPosition(function (position) {
             $scope.position = position;
           
-            $http.get("http://api.mygasfeed.com/stations/radius/" + position.coords.latitude + "/" + position.coords.longitude + "/5/reg/distance/8mi9kj0577.json")
+            $http.get("http://api.mygasfeed.com/stations/radius/" + position.coords.latitude + "/" + position.coords.longitude + "/5/reg/"
+                      + ($scope.stationPreference || "distance") + "/8mi9kj0577.json")
                 .then(function success(res) {
                   setStations(res);
                 });
-        }, true);
+          }, true);
+        }
     })
     .controller("NearbyCtrl", function ($scope, $http) {
                 
