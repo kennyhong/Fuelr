@@ -11,6 +11,10 @@ angular.module("ngi", ["ngRoute"])
             templateUrl: "./views/warningPage.html",
             controller: "WarningCtrl"
           })
+          .when("/selection", {
+            templateUrl: "./views/selectionPage.html",
+            controller: "SelectionCtrl"
+          })
           .otherwise({
             redirectTo: "/"
           });
@@ -30,7 +34,7 @@ angular.module("ngi", ["ngRoute"])
             console.error("T~T");
         }
     })
-    .controller('WarningCtrl', function($scope, $http, $routeParams) {
+    .controller('WarningCtrl', function($scope, $rootScope, $http, $routeParams, $location) {
         $scope.fuel = $routeParams.fuel;
 
         var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
@@ -49,25 +53,34 @@ angular.module("ngi", ["ngRoute"])
         }
 
         $scope.findCheapest = function() {
-          $scope.stationPreference = 'cheapest';
+          $scope.stationPreference = 'price';
           getStations();
         }
     
         function setStations(res) {
-            $scope.stations = res.data.stations;
+            $rootScope.stations = res.data.stations;
+            $location.path('/selection');
         }
   
         function getStations() {
           gm.info.getCurrentPosition(function (position) {
             $scope.position = position;
+
+            // hardcoded values
+            position = {coords: {latitude: 42.11147869413297, longitude: -83.48970413208}};
           
-            $http.get("http://api.mygasfeed.com/stations/radius/" + position.coords.latitude + "/" + position.coords.longitude + "/5/reg/"
+            $http.get("http://api.mygasfeed.com/stations/radius/" + position.coords.latitude + "/" + position.coords.longitude + "/15/reg/"
                       + ($scope.stationPreference || "distance") + "/8mi9kj0577.json")
                 .then(function success(res) {
                   setStations(res);
                 });
           }, true);
         }
+    })
+    .controller('SelectionCtrl', function($scope, $rootScope) {
+      $scope.stations = $rootScope.stations;
+      console.log($scope.stations);
+
     })
     .controller("NearbyCtrl", function ($scope, $http) {
                 
