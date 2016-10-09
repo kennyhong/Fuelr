@@ -35,7 +35,7 @@
 
 <body ng-app="ngi">
 <div id="wrapper">
-    <div id="close"><img src="images/close.png" onlick="gm.system.closeApp()" alt="close"></div>
+    <div id="close-x"><img src="images/close.png" onlick="gm.system.closeApp()" alt="close"></div>
     <div id="main" ng-controller="HelloWorldCtrl">
         <div id="map"></div>
         <script>
@@ -43,14 +43,13 @@
                 gm.info.getCurrentPosition(initializeCoords, true);
 
                 function initializeCoords(position) {
-                    var uluru = {lat: position.coords.latitude, lng: position.coords.longitude};
+                    var coords = {lat: position.coords.latitude, lng: position.coords.longitude};
                     var map = new google.maps.Map(document.getElementById('map'), {
                         zoom: 17,
-                        center: uluru
+                        center: coords
                     });
-
                     var marker = new google.maps.Marker({
-                        position: uluru,
+                        position: coords,
                         map: map
                     });
                 }
@@ -58,14 +57,13 @@
                 gm.info.watchPosition(watchCoords, true);
 
                 function watchCoords(position) {
-                    var uluru = {lat: position.coords.latitude, lng: position.coords.longitude};
+                   var coords = {lat: position.coords.latitude, lng: position.coords.longitude};
                     var map = new google.maps.Map(document.getElementById('map'), {
                         zoom: 17,
-                        center: uluru
+                        center: coords
                     });
-
                     var marker = new google.maps.Marker({
-                        position: uluru,
+                        position: coords,
                         map: map
                     });
                 }
