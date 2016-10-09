@@ -34,5 +34,6 @@ angular.module("ngi", ["ngRoute"])
         })
     .controller('WarningCtrl', function($scope, $routeParams) {
       console.log("in WarningCtrl");
-      $scope.fuel = $routeParams.fuel_level;
+      $scope.fuel = $routeParams.fuel;
+      console.log($routeParams);
     });
