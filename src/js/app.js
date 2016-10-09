@@ -43,4 +43,7 @@ angular.module("ngi", ["ngRoute"])
         function watchDataFailureCallback() {
             console.error("T~T");
         }
+    })
+    .controller("NearbyCtrl", function ($scope) {
+        
     });

@@ -19,7 +19,8 @@
     <script>
         function initMap() {
 
-            var initializeCoords = function (position) {
+            function initializeCoords(position) {
+                console.log("THE POSITION IS ", position);
                 var coords = {lat: position.coords.latitude, lng: position.coords.longitude};
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 17,
