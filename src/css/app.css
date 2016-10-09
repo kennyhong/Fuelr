@@ -1,10 +1,13 @@
-/* Your CSS goes here */
-#harambe{
-	color:white;
-	text-shadow: 2px 2px black;
+body {
+	background: #44484f;
 }
 
-#main {
+#harambe{
+	padding: 50px 40px;
+	color:white;
+}
+
+#main, #harambe {
     text-align: center;
     background-color: transparent;
 }

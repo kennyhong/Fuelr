@@ -1,29 +1,30 @@
 // Your code goes here
 
-var app = angular.module("ngi", ["ui.router"]);
-
-app.config(function($stateProvider, $urlRouterProvider) {
-        $stateProvider
-            .state("warning/:fuel", {
-                url: "/warning/:fuel",
-                templateUrl: "../views/warningPage.html",
-                controller: "HomeCtrl"
-            })
-            .state("home", {
-                url: "/",
-                templateUrl: "../views/homePage.html"
-            });
-        $urlRouterProvider.otherwise("/");
+angular.module("ngi", ["ngRoute"])
+  .config(function($routeProvider) {
+        $routeProvider
+          .when("/", {
+            templateUrl: "views/homePage.html",
+            controller: "HomeCtrl"
+          })
+          .when("/warning/:fuel", {
+            templateUrl: "./views/warningPage.html",
+            controller: "WarningCtrl"
+          })
+          .otherwise({
+            redirectTo: "/"
+          });
     })
-    .controller('HomeCtrl',
-        function($scope, $location) {
+    .controller('HomeCtrl', function($scope, $route, $location) {
+      console.log("in HomeCtrl")
             var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
             console.log('watching');
             function processData(data) {
                 console.log(data);
-                if(data.fuel_level <= 25) {
-                    console.log('A');
-                    $location.path = '/warning/' + data.fuel_level;
+                if (data.fuel_level <= 25) {
+                  console.log("ATTEMPTING TO REDIRECT TO /warning/" + data.fuel_level);
+                    $location.path('/warning/' + data.fuel_level);
+                    $scope.$apply();
                 }
             }
             
@@ -31,8 +32,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 console.error("T~T");
             }
         })
-    .controller('WarningCtrl',
-        function($scope, $route, $routeParams, $location) {
-            $scope.fuel = $routeParams.fuel;
-            console.log($scope.fuel);
-        });
+    .controller('WarningCtrl', function($scope, $routeParams) {
+      console.log("in WarningCtrl");
+      $scope.fuel = $routeParams.fuel_level;
+    });
