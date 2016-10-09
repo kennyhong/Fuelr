@@ -16,7 +16,6 @@ angular.module("ngi", ["ngRoute"])
           });
     })
     .controller('HomeCtrl', function($scope, $route, $location) {
-      console.log("in HomeCtrl")
             var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
             console.log('watching');
             function processData(data) {
