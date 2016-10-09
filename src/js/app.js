@@ -33,7 +33,7 @@ angular.module("ngi", ["ngRoute"])
     .controller('WarningCtrl', function($scope, $routeParams) {
         $scope.fuel = $routeParams.fuel;
 
-        var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);;
+        var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
         function processData(data) {
             console.log(data);
             $scope.fuel = data.fuel_level;
