@@ -42,16 +42,18 @@ angular.module("ngi", ["ngRoute"])
         function watchDataFailureCallback() {
             console.error("T~T");
         }
-    })
-    .controller("NearbyCtrl", function ($scope, $http) {
+    
         function setStations(stations) {
             console.log("The stations are", stations);
             $scope.stations = stations;
         }
-        
+    
         gm.info.getCurrentPosition(function (position) {
             $scope.position = position;
             $http.get("http://api.mygasfeed.com/stations/radius/" + position.coords.latitude + "/" + positions.coords.longitude + "/5/reg/distance/8mi9kj0577.json?callback=setStations");
         });
-        
+    
+    })
+    .controller("NearbyCtrl", function ($scope, $http) {
+                
     });
