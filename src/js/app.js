@@ -24,6 +24,7 @@ angular.module("ngi", ["ngRoute"])
                 if (data.fuel_level <= 25) {
                   console.log("ATTEMPTING TO REDIRECT TO /warning/" + data.fuel_level);
                     $location.path('/warning/' + data.fuel_level);
+                    gm.info.clearVehicleData(fuelID);
                     $scope.$apply();
                 }
             }
@@ -36,4 +37,16 @@ angular.module("ngi", ["ngRoute"])
       console.log("in WarningCtrl");
       $scope.fuel = $routeParams.fuel;
       console.log($routeParams);
+
+            var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
+            console.log('watching');
+            function processData(data) {
+                console.log(data);
+                $scope.fuel = data.fuel_level;
+                $scope.$apply();
+            }
+            
+            function watchDataFailureCallback() {
+                console.error("T~T");
+            }
     });
