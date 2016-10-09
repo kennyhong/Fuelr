@@ -35,7 +35,6 @@ angular.module("ngi", ["ngRoute"])
 
         var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
         function processData(data) {
-            console.log(data);
             $scope.fuel = data.fuel_level;
             $scope.$apply();
         }
@@ -44,6 +43,15 @@ angular.module("ngi", ["ngRoute"])
             console.error("T~T");
         }
     })
-    .controller("NearbyCtrl", function ($scope) {
+    .controller("NearbyCtrl", function ($scope, $http) {
+        function setStations(stations) {
+            console.log("The stations are", stations);
+            $scope.stations = stations;
+        }
+        
+        gm.info.getCurrentPosition(function (position) {
+            $scope.position = position;
+            $http.get("http://api.mygasfeed.com/stations/radius/" + position.coords.latitude + "/" + positions.coords.longitude + "/5/reg/distance/8mi9kj0577.json?callback=setStations");
+        });
         
     });
