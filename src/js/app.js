@@ -16,18 +16,17 @@ gm.info.getVehicleConfiguration(function (data) {
 
 var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
 
-if(fuelID <= 25)
-{
-	<script type="text/javascript">
-		window.open ('warningPage','_self',false)
-	</script>
-}
 
-// gm.info.getVehicleData(processData, ["fuel_level"]);
+gm.info.getVehicleData(processData, ["fuel_level"]);
 
-/*function processData(data) {
-  // called continuously as watched signals update
-  // NOTE: expect some `analog` signals to bounce
+
+
+function processData(data) {
+  	if(data.fuel_level <= 25)
+	{
+		window.location.href = "warningPage.html";
+		console.log("fueldId under 25");
+	}		
  	console.log("@@@@", data);
 }
 
@@ -35,5 +34,5 @@ function watchDataFailureCallback() {
 
 	console.error("T~T");
 }
-*/
+
 
