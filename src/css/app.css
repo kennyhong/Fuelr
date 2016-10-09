@@ -1,12 +1,10 @@
 /* Your CSS goes here */
-body{
-	background-color: #44484f;
+#harambe{
 	color:white;
 	text-shadow: 2px 2px black;
 }
 
 #main {
-	padding-top: 100px;
     text-align: center;
     background-color: transparent;
 }
@@ -37,9 +35,8 @@ meter{
 }
 
 #close-x {
-  /*position: absolute;*/
+  position: absolute;
   float: right;
-  top: 90px;
   right: 0;
   width: 64px;
   height: 64px;
