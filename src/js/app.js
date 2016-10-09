@@ -30,7 +30,7 @@ angular.module("ngi", ["ngRoute"])
             console.error("T~T");
         }
     })
-    .controller('WarningCtrl', function($scope, $routeParams) {
+    .controller('WarningCtrl', function($scope, $http, $routeParams) {
         $scope.fuel = $routeParams.fuel;
 
         var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
