@@ -1,12 +1,14 @@
-<h1>LOW GAS WARNING</h1>
-<div class="row">
-  <div class ="one column">
-    <meter value="100" max="100"></meter>
-    {{ }}
-  </div>
-  <div class = "eleven columns">
+<div id="harambe">
+  <h1>LOW GAS WARNING</h1>
+  <div class="row">
+    <div class="one column">
+    {{fuel}}
+      <meter value="$scope.fuel" max="100">Low</meter>
+    </div>
+    
+    <div class="eleven columns">
       <button class="button-primary find-button">FIND NEAREST GAS STATION</button></br>
       <button class="button-primary find-button">FIND CHEAPEST GAS STATION</button></br>
       <button class="button-primary find-button favorite-button">FIND FAVORITE GAS STATION</button>
-  <div>
+    </div>
 </div>
