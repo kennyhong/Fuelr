@@ -30,11 +30,18 @@
                     position: coords,
                     map: map
                 });
-            };
+            }
             gm.info.getCurrentPosition(initializeCoords, true);
             gm.info.watchPosition(initializeCoords, true);
         }
     </script>
+
+    <style>
+        #map {
+            height: 390px;
+            width: 800px;
+        }
+    </style>
     <!-- Uncomment libraries as you need them: -->
     <!-- <script src="GMLIB/comm.js"></script> -->
     <!-- <script src="GMLIB/io.js"></script> -->
