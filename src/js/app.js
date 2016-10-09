@@ -17,19 +17,6 @@ angular.module("ngi", ["ngRoute"])
     })
     .controller('HomeCtrl', function($scope, $route, $location) {
         var fuelID = gm.info.watchVehicleData(processData, watchDataFailureCallback, ["fuel_level"]);
-        function initializeCoordinates(position) {
-            var coords = {lat: position.coords.latitude, lng: position.coords.longitude};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 17,
-                center: coords
-            });
-            var marker = new google.maps.Marker({
-                position: coords,
-                map: map
-            });
-        }
-        
-        gm.info.getCurrentPosition(initializeCoordinates, true);
         
         function processData(data) {
             if (data.fuel_level <= 25) {
@@ -56,10 +43,4 @@ angular.module("ngi", ["ngRoute"])
         function watchDataFailureCallback() {
             console.error("T~T");
         }
-    })
-    .controller("FunctionsCtrl", function ($scope) {
-        $scope.processData = function (data) {
-            $scope.fuel = data.fuel_level;
-            $scope.$apply();
-        };
     });
